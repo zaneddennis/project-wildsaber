@@ -1,0 +1,73 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcpeyghpy8f6v"]
+
+[ext_resource type="FontFile" uid="uid://ce4rpfr4j04e2" path="res://Themes/good-times.rg-regular.otf" id="1_51q6t"]
+[ext_resource type="Script" path="res://Debug/DebugUI.gd" id="1_rbru6"]
+
+[node name="Main" type="Node"]
+
+[node name="MainMenu" type="CanvasLayer" parent="."]
+
+[node name="Title" type="Label" parent="MainMenu"]
+custom_minimum_size = Vector2(0, 128)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_51q6t")
+theme_override_font_sizes/font_size = 72
+text = "PROJECT WILDSABER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu"]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -320.0
+offset_top = 128.0
+offset_right = -64.0
+offset_bottom = -132.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Continue" type="Button" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Continue Last Save:
+///"
+
+[node name="LoadGame" type="Button" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Load Game"
+
+[node name="NewGame" type="Button" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "New Game"
+
+[node name="Settings" type="Button" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+disabled = true
+text = "Settings"
+
+[node name="Quit" type="Button" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Exit to Desktop"
+
+[node name="DebugUI" type="CanvasLayer" parent="."]
+script = ExtResource("1_rbru6")
+
+[node name="Label" type="Label" parent="DebugUI"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 40.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 12
+text = "vV.VVV"
+vertical_alignment = 2
