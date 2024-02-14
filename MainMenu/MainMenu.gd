@@ -1,13 +1,18 @@
 extends CanvasLayer
 
 
-const SAVE_LOCATION = "user://save_data"
+signal start_game(slot: String)
+
 
 var saves: Dictionary
 var save_names_sorted: Array
 
 
 func _ready():
+	Activate()
+
+
+func Activate():
 	saves = GetSaves()
 	save_names_sorted = saves.keys()
 	save_names_sorted.sort_custom(func(a, b): return saves[a]["last_played"] > saves[b]["last_played"])
@@ -23,21 +28,29 @@ func _ready():
 		]
 
 
-func _on_quit_pressed():
-	get_tree().quit()
-
-
 # todo: handle bad save files
 func GetSaves() -> Dictionary:
-	var saves_dir = DirAccess.open(SAVE_LOCATION)
+	var saves_dir = DirAccess.open(Util.SAVE_LOCATION)
 	
 	var result = {}
 	for save_name in saves_dir.get_directories():
 		var save_meta = JSON.parse_string(
-			FileAccess.open(SAVE_LOCATION + "/" + save_name + "/meta.save", FileAccess.READ).get_as_text()
+			FileAccess.open(Util.SAVE_LOCATION + "/" + save_name + "/meta.save", FileAccess.READ).get_as_text()
 		)
 		
 		if save_meta:
 			result[save_name] = save_meta
 	
 	return result
+
+
+func StartGame(slot: String):
+	hide()
+	start_game.emit(slot)
+
+
+func _on_continue_pressed():
+	StartGame(save_names_sorted[0])
+
+func _on_quit_pressed():
+	get_tree().quit()

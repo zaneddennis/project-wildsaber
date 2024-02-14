@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://d287jsmat4l4a"]
+
+[node name="InterfaceButton" type="Button"]
+custom_minimum_size = Vector2(64, 64)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
