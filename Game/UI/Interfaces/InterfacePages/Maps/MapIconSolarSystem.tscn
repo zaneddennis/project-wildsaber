@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0l7as1xffp4"]
+
+[ext_resource type="PackedScene" uid="uid://c6bgrxpy575pd" path="res://Game/UI/Interfaces/InterfacePages/Maps/MapIconEmptySector.tscn" id="1_08ya3"]
+[ext_resource type="Texture2D" uid="uid://cr626b353yk5c" path="res://Game/UI/Interfaces/InterfacePages/Maps/MapStar.png" id="1_mqifi"]
+
+[node name="SolarSystemIcon" instance=ExtResource("1_08ya3")]
+texture = ExtResource("1_mqifi")

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqx2ohmrruriw"]
+
+[ext_resource type="PackedScene" uid="uid://crw2j6okiwk0v" path="res://Game/UI/Interfaces/InterfacePages/InterfacePage.tscn" id="1_k07un"]
+
+[node name="Character" instance=ExtResource("1_k07un")]
+
+[node name="Label" parent="Title" index="0"]
+text = "CHARACTER"

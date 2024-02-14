@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=10 format=3 uid="uid://cjh1fs3dcwmbp"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://cjh1fs3dcwmbp"]
 
 [ext_resource type="Texture2D" uid="uid://dpk38bb7oivbw" path="res://Themes/Panel.png" id="1_at5x7"]
 [ext_resource type="Texture2D" uid="uid://tisttmadgu2l" path="res://Themes/Button.png" id="1_k3c8f"]
@@ -51,6 +51,10 @@ texture_margin_top = 4.0
 texture_margin_right = 4.0
 texture_margin_bottom = 4.0
 
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_b455d"]
+color = Color(0.490196, 0.972549, 1, 1)
+vertical = true
+
 [resource]
 default_font = ExtResource("1_kyeb1")
 default_font_size = 16
@@ -61,3 +65,4 @@ Button/styles/hover = SubResource("StyleBoxTexture_6xokt")
 Button/styles/normal = SubResource("StyleBoxTexture_5alyy")
 Button/styles/pressed = SubResource("StyleBoxTexture_orbiq")
 Panel/styles/panel = SubResource("StyleBoxTexture_s7ica")
+VSeparator/styles/separator = SubResource("StyleBoxLine_b455d")

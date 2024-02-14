@@ -1,0 +1,102 @@
+[gd_scene load_steps=6 format=3 uid="uid://dyvjqh6oqltu2"]
+
+[ext_resource type="PackedScene" uid="uid://crw2j6okiwk0v" path="res://Game/UI/Interfaces/InterfacePages/InterfacePage.tscn" id="1_sv4hb"]
+[ext_resource type="Script" path="res://Game/UI/Interfaces/InterfacePages/Maps/MapsInterfacePage.gd" id="2_sxof5"]
+[ext_resource type="PackedScene" uid="uid://c0l7as1xffp4" path="res://Game/UI/Interfaces/InterfacePages/Maps/MapIconSolarSystem.tscn" id="3_1v7iw"]
+[ext_resource type="PackedScene" uid="uid://c6bgrxpy575pd" path="res://Game/UI/Interfaces/InterfacePages/Maps/MapIconEmptySector.tscn" id="3_g7hom"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_vc5xt"]
+
+[node name="Maps" instance=ExtResource("1_sv4hb")]
+script = ExtResource("2_sxof5")
+EmptySectorIcon = ExtResource("3_g7hom")
+SolarSystemIcon = ExtResource("3_1v7iw")
+
+[node name="Label" parent="Title" index="0"]
+text = "MAPS"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." index="1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="Map" type="CenterContainer" parent="HBoxContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Map" index="0"]
+layout_mode = 2
+alignment = 1
+
+[node name="Map" type="Panel" parent="HBoxContainer/Map/VBoxContainer" index="0"]
+custom_minimum_size = Vector2(640, 640)
+layout_mode = 2
+
+[node name="Background" type="ColorRect" parent="HBoxContainer/Map/VBoxContainer/Map" index="0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer/Map/VBoxContainer/Map" index="1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 20
+
+[node name="Levels" type="HBoxContainer" parent="HBoxContainer/Map/VBoxContainer" index="1"]
+custom_minimum_size = Vector2(400, 40)
+layout_mode = 2
+alignment = 1
+
+[node name="Planet" type="Button" parent="HBoxContainer/Map/VBoxContainer/Levels" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+toggle_mode = true
+button_group = SubResource("ButtonGroup_vc5xt")
+text = "Planet"
+
+[node name="Sector" type="Button" parent="HBoxContainer/Map/VBoxContainer/Levels" index="1"]
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+toggle_mode = true
+button_group = SubResource("ButtonGroup_vc5xt")
+text = "Sector"
+
+[node name="Galaxy" type="Button" parent="HBoxContainer/Map/VBoxContainer/Levels" index="2"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_pressed = true
+button_group = SubResource("ButtonGroup_vc5xt")
+text = "Galaxy"
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer" index="1"]
+custom_minimum_size = Vector2(0, 640)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Details" type="VBoxContainer" parent="HBoxContainer" index="2"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1

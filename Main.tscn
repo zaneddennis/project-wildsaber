@@ -1,10 +1,183 @@
-[gd_scene load_steps=4 format=3 uid="uid://dcpeyghpy8f6v"]
+[gd_scene load_steps=29 format=3 uid="uid://dcpeyghpy8f6v"]
 
+[ext_resource type="Script" path="res://Main.gd" id="1_4k26a"]
 [ext_resource type="FontFile" uid="uid://ce4rpfr4j04e2" path="res://Themes/good-times.rg-regular.otf" id="1_51q6t"]
+[ext_resource type="Script" path="res://Game/ActiveGame.gd" id="1_ctg5y"]
 [ext_resource type="Script" path="res://Debug/DebugUI.gd" id="1_rbru6"]
 [ext_resource type="Script" path="res://MainMenu/MainMenu.gd" id="1_redg8"]
+[ext_resource type="PackedScene" uid="uid://d287jsmat4l4a" path="res://Game/UI/Interfaces/InterfaceButton.tscn" id="2_2whxx"]
+[ext_resource type="Texture2D" uid="uid://craf8ncf4td3v" path="res://Game/UI/Interfaces/InterfaceIcons.png" id="2_4c048"]
+[ext_resource type="Texture2D" uid="uid://c5j2lc2pgy2k5" path="res://Game/Geography/Background/Background1.png" id="3_buo06"]
+[ext_resource type="Script" path="res://Game/UI/Interfaces/Interfaces.gd" id="4_7ib7t"]
+[ext_resource type="PackedScene" uid="uid://dqx2ohmrruriw" path="res://Game/UI/Interfaces/InterfacePages/CharacterInterfacePage.tscn" id="4_e6vuf"]
+[ext_resource type="Texture2D" uid="uid://ddenudpqt62uc" path="res://Game/Geography/Background/BackgroundNear1.png" id="4_ij3jr"]
+[ext_resource type="Script" path="res://Debug/TestCamera.gd" id="4_qocmy"]
+[ext_resource type="Script" path="res://Game/Geography/Galaxy.gd" id="5_sor46"]
+[ext_resource type="PackedScene" uid="uid://dx5iaqyph5kfo" path="res://Game/UI/Interfaces/InterfacePages/InventoriesInterfacePage.tscn" id="5_tj635"]
+[ext_resource type="PackedScene" uid="uid://dyvjqh6oqltu2" path="res://Game/UI/Interfaces/InterfacePages/Maps/MapsInterfacePage.tscn" id="6_dl607"]
+[ext_resource type="PackedScene" uid="uid://ce7cy1mrfoy6u" path="res://Game/UI/Interfaces/InterfacePages/SystemInterfacePage.tscn" id="7_8cghn"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_4rark"]
+action = &"interface_character"
+
+[sub_resource type="Shortcut" id="Shortcut_gh56w"]
+events = [SubResource("InputEventAction_4rark")]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8kwp"]
+atlas = ExtResource("2_4c048")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="InputEventAction" id="InputEventAction_1cpon"]
+action = &"interface_inventories"
+
+[sub_resource type="Shortcut" id="Shortcut_mnnyv"]
+events = [SubResource("InputEventAction_1cpon")]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5eym4"]
+atlas = ExtResource("2_4c048")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="InputEventAction" id="InputEventAction_kdw5s"]
+action = &"interface_maps"
+
+[sub_resource type="Shortcut" id="Shortcut_a1cw5"]
+events = [SubResource("InputEventAction_kdw5s")]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odl1x"]
+atlas = ExtResource("2_4c048")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="InputEventAction" id="InputEventAction_s13hk"]
+action = &"interface_system"
+
+[sub_resource type="Shortcut" id="Shortcut_t7ugc"]
+events = [SubResource("InputEventAction_s13hk")]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y74hw"]
+atlas = ExtResource("2_4c048")
+region = Rect2(96, 0, 32, 32)
 
 [node name="Main" type="Node"]
+script = ExtResource("1_4k26a")
+
+[node name="ActiveGame" type="Node2D" parent="." node_paths=PackedStringArray("ui")]
+visible = false
+script = ExtResource("1_ctg5y")
+ui = NodePath("../GameUI")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="ActiveGame"]
+visible = false
+
+[node name="Base" type="ParallaxLayer" parent="ActiveGame/ParallaxBackground"]
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(3840, 3840)
+
+[node name="Sprite2D" type="Sprite2D" parent="ActiveGame/ParallaxBackground/Base"]
+texture = ExtResource("3_buo06")
+centered = false
+
+[node name="NearStars" type="ParallaxLayer" parent="ActiveGame/ParallaxBackground"]
+motion_scale = Vector2(0.25, 0.25)
+motion_mirroring = Vector2(3840, 3840)
+
+[node name="Sprite2D" type="Sprite2D" parent="ActiveGame/ParallaxBackground/NearStars"]
+texture = ExtResource("4_ij3jr")
+centered = false
+
+[node name="Galaxy" type="Node" parent="ActiveGame"]
+script = ExtResource("5_sor46")
+
+[node name="TestCamera" type="Camera2D" parent="ActiveGame"]
+enabled = false
+script = ExtResource("4_qocmy")
+
+[node name="GameUI" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="TopBar" type="ColorRect" parent="GameUI"]
+custom_minimum_size = Vector2(0, 24)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+color = Color(0.282353, 0.282353, 0.282353, 0.588235)
+
+[node name="InterfaceButtons" type="Panel" parent="GameUI/TopBar"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -256.0
+offset_bottom = 64.0
+grow_horizontal = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameUI/TopBar/InterfaceButtons"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Character" parent="GameUI/TopBar/InterfaceButtons/HBoxContainer" instance=ExtResource("2_2whxx")]
+layout_mode = 2
+shortcut = SubResource("Shortcut_gh56w")
+
+[node name="TextureRect" parent="GameUI/TopBar/InterfaceButtons/HBoxContainer/Character" index="0"]
+texture = SubResource("AtlasTexture_t8kwp")
+
+[node name="Inventories" parent="GameUI/TopBar/InterfaceButtons/HBoxContainer" instance=ExtResource("2_2whxx")]
+layout_mode = 2
+shortcut = SubResource("Shortcut_mnnyv")
+
+[node name="TextureRect" parent="GameUI/TopBar/InterfaceButtons/HBoxContainer/Inventories" index="0"]
+texture = SubResource("AtlasTexture_5eym4")
+
+[node name="Maps" parent="GameUI/TopBar/InterfaceButtons/HBoxContainer" instance=ExtResource("2_2whxx")]
+layout_mode = 2
+shortcut = SubResource("Shortcut_a1cw5")
+
+[node name="TextureRect" parent="GameUI/TopBar/InterfaceButtons/HBoxContainer/Maps" index="0"]
+texture = SubResource("AtlasTexture_odl1x")
+
+[node name="System" parent="GameUI/TopBar/InterfaceButtons/HBoxContainer" instance=ExtResource("2_2whxx")]
+layout_mode = 2
+shortcut = SubResource("Shortcut_t7ugc")
+
+[node name="TextureRect" parent="GameUI/TopBar/InterfaceButtons/HBoxContainer/System" index="0"]
+texture = SubResource("AtlasTexture_y74hw")
+
+[node name="Interfaces" type="Panel" parent="GameUI"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -600.0
+offset_top = -384.0
+offset_right = 600.0
+offset_bottom = 384.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_7ib7t")
+
+[node name="Character" parent="GameUI/Interfaces" instance=ExtResource("4_e6vuf")]
+visible = false
+layout_mode = 1
+
+[node name="Inventories" parent="GameUI/Interfaces" instance=ExtResource("5_tj635")]
+visible = false
+layout_mode = 1
+
+[node name="Maps" parent="GameUI/Interfaces" node_paths=PackedStringArray("galaxy") instance=ExtResource("6_dl607")]
+visible = false
+layout_mode = 1
+galaxy = NodePath("../../../ActiveGame/Galaxy")
+
+[node name="System" parent="GameUI/Interfaces" instance=ExtResource("7_8cghn")]
+visible = false
+layout_mode = 1
 
 [node name="MainMenu" type="CanvasLayer" parent="."]
 script = ExtResource("1_redg8")
@@ -78,4 +251,18 @@ theme_override_font_sizes/font_size = 12
 text = "vV.VVV"
 vertical_alignment = 2
 
+[connection signal="exit_to_main_menu" from="ActiveGame" to="." method="_on_active_game_exit_to_main_menu"]
+[connection signal="pressed" from="GameUI/TopBar/InterfaceButtons/HBoxContainer/Character" to="GameUI/Interfaces" method="_on_character_pressed"]
+[connection signal="pressed" from="GameUI/TopBar/InterfaceButtons/HBoxContainer/Inventories" to="GameUI/Interfaces" method="_on_inventories_pressed"]
+[connection signal="pressed" from="GameUI/TopBar/InterfaceButtons/HBoxContainer/Maps" to="GameUI/Interfaces" method="_on_maps_pressed"]
+[connection signal="pressed" from="GameUI/TopBar/InterfaceButtons/HBoxContainer/System" to="GameUI/Interfaces" method="_on_system_pressed"]
+[connection signal="exit_to_main_menu" from="GameUI/Interfaces/System" to="ActiveGame" method="_on_exit_to_main_menu"]
+[connection signal="save_game" from="GameUI/Interfaces/System" to="ActiveGame" method="_on_system_save_game"]
+[connection signal="start_game" from="MainMenu" to="." method="_on_main_menu_start_game"]
+[connection signal="pressed" from="MainMenu/Buttons/Continue" to="MainMenu" method="_on_continue_pressed"]
 [connection signal="pressed" from="MainMenu/Buttons/Quit" to="MainMenu" method="_on_quit_pressed"]
+
+[editable path="GameUI/TopBar/InterfaceButtons/HBoxContainer/Character"]
+[editable path="GameUI/TopBar/InterfaceButtons/HBoxContainer/Inventories"]
+[editable path="GameUI/TopBar/InterfaceButtons/HBoxContainer/Maps"]
+[editable path="GameUI/TopBar/InterfaceButtons/HBoxContainer/System"]
