@@ -48,7 +48,7 @@ func RenderGalaxy():
 
 func RenderSector(sector: Sector, coords: Vector2i):
 	var iconScene = EmptySectorIcon
-	if sector.major_object == "Sun":
+	if sector.major_object == Sector.MAJOR_OBJECT_SUN:
 		iconScene = SolarSystemIcon
 	var icon = iconScene.instantiate()
 	$HBoxContainer/Map/VBoxContainer/Map/GridContainer.add_child(icon)

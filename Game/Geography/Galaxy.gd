@@ -8,7 +8,6 @@ var size: Vector2i
 var sectors: Array
 
 
-# todo: load from file
 func Activate(slot: String):
 	LoadGalaxy(slot)
 

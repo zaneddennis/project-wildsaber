@@ -2,6 +2,9 @@ extends Object
 class_name Sector
 
 
+const MAJOR_OBJECT_SUN = "sun"
+
+
 var major_object: String
 
 
