@@ -1,11 +1,68 @@
-[gd_scene load_steps=6 format=3 uid="uid://dyvjqh6oqltu2"]
+[gd_scene load_steps=23 format=3 uid="uid://dyvjqh6oqltu2"]
 
 [ext_resource type="PackedScene" uid="uid://crw2j6okiwk0v" path="res://Game/UI/Interfaces/InterfacePages/InterfacePage.tscn" id="1_sv4hb"]
 [ext_resource type="Script" path="res://Game/UI/Interfaces/InterfacePages/Maps/MapsInterfacePage.gd" id="2_sxof5"]
 [ext_resource type="PackedScene" uid="uid://c0l7as1xffp4" path="res://Game/UI/Interfaces/InterfacePages/Maps/MapIconSolarSystem.tscn" id="3_1v7iw"]
 [ext_resource type="PackedScene" uid="uid://c6bgrxpy575pd" path="res://Game/UI/Interfaces/InterfacePages/Maps/MapIconEmptySector.tscn" id="3_g7hom"]
+[ext_resource type="PackedScene" uid="uid://bglw3w8n5t0hn" path="res://Game/UI/Interfaces/InterfacePages/Maps/RingIcon.tscn" id="5_d8gel"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_vc5xt"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5wjgc"]
+load_path = "res://.godot/imported/RingIcons.png-c8b758e98a3b2a43d2abe75bc980c2c8.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xpb1t"]
+atlas = SubResource("CompressedTexture2D_5wjgc")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vhi70"]
+load_path = "res://.godot/imported/RingIcons.png-c8b758e98a3b2a43d2abe75bc980c2c8.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqxp2"]
+atlas = SubResource("CompressedTexture2D_vhi70")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5slui"]
+load_path = "res://.godot/imported/RingIcons.png-c8b758e98a3b2a43d2abe75bc980c2c8.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0a64"]
+atlas = SubResource("CompressedTexture2D_5slui")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_htfcm"]
+load_path = "res://.godot/imported/RingIcons.png-c8b758e98a3b2a43d2abe75bc980c2c8.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84lph"]
+atlas = SubResource("CompressedTexture2D_htfcm")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qwxwu"]
+load_path = "res://.godot/imported/RingIcons.png-c8b758e98a3b2a43d2abe75bc980c2c8.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nm723"]
+atlas = SubResource("CompressedTexture2D_qwxwu")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1n7m2"]
+load_path = "res://.godot/imported/RingIcons.png-c8b758e98a3b2a43d2abe75bc980c2c8.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnc8k"]
+atlas = SubResource("CompressedTexture2D_1n7m2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_r566h"]
+load_path = "res://.godot/imported/RingIcons.png-c8b758e98a3b2a43d2abe75bc980c2c8.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_72p5y"]
+atlas = SubResource("CompressedTexture2D_r566h")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_a2v4d"]
+load_path = "res://.godot/imported/RingIcons.png-c8b758e98a3b2a43d2abe75bc980c2c8.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gy8lp"]
+atlas = SubResource("CompressedTexture2D_a2v4d")
+region = Rect2(0, 0, 32, 32)
 
 [node name="Maps" instance=ExtResource("1_sv4hb")]
 script = ExtResource("2_sxof5")
@@ -95,8 +152,68 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Details" type="VBoxContainer" parent="HBoxContainer" index="2"]
-custom_minimum_size = Vector2(400, 0)
+[node name="Sector_Details" type="VBoxContainer" parent="HBoxContainer" index="2"]
+custom_minimum_size = Vector2(400, 640)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Name" type="Label" parent="HBoxContainer/Sector_Details" index="0"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Sector Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/Sector_Details" index="1"]
+custom_minimum_size = Vector2(324, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Rings" type="HBoxContainer" parent="HBoxContainer/Sector_Details" index="2"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_override_constants/separation = 0
 alignment = 1
+
+[node name="Sun" parent="HBoxContainer/Sector_Details/Rings" index="0" instance=ExtResource("5_d8gel")]
+layout_mode = 2
+
+[node name="RingIcon0" parent="HBoxContainer/Sector_Details/Rings" index="1" instance=ExtResource("5_d8gel")]
+layout_mode = 2
+texture = SubResource("AtlasTexture_xpb1t")
+
+[node name="RingIcon1" parent="HBoxContainer/Sector_Details/Rings" index="2" instance=ExtResource("5_d8gel")]
+layout_mode = 2
+texture = SubResource("AtlasTexture_tqxp2")
+
+[node name="RingIcon2" parent="HBoxContainer/Sector_Details/Rings" index="3" instance=ExtResource("5_d8gel")]
+layout_mode = 2
+texture = SubResource("AtlasTexture_y0a64")
+
+[node name="RingIcon3" parent="HBoxContainer/Sector_Details/Rings" index="4" instance=ExtResource("5_d8gel")]
+layout_mode = 2
+texture = SubResource("AtlasTexture_84lph")
+
+[node name="RingIcon4" parent="HBoxContainer/Sector_Details/Rings" index="5" instance=ExtResource("5_d8gel")]
+layout_mode = 2
+texture = SubResource("AtlasTexture_nm723")
+
+[node name="RingIcon5" parent="HBoxContainer/Sector_Details/Rings" index="6" instance=ExtResource("5_d8gel")]
+layout_mode = 2
+texture = SubResource("AtlasTexture_hnc8k")
+
+[node name="RingIcon6" parent="HBoxContainer/Sector_Details/Rings" index="7" instance=ExtResource("5_d8gel")]
+layout_mode = 2
+texture = SubResource("AtlasTexture_72p5y")
+
+[node name="RingIcon7" parent="HBoxContainer/Sector_Details/Rings" index="8" instance=ExtResource("5_d8gel")]
+layout_mode = 2
+texture = SubResource("AtlasTexture_gy8lp")
+
+[node name="Asteroids" type="Label" parent="HBoxContainer/Sector_Details" index="3"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+text = "Asteroid Density: 0.0"
+vertical_alignment = 2

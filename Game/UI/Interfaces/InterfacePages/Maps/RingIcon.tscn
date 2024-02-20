@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bglw3w8n5t0hn"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3lqgi"]
+load_path = "res://.godot/imported/RingIcons.png-c8b758e98a3b2a43d2abe75bc980c2c8.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gxja"]
+atlas = SubResource("CompressedTexture2D_3lqgi")
+region = Rect2(0, 0, 36, 36)
+
+[node name="RingIcon" type="TextureRect"]
+custom_minimum_size = Vector2(36, 36)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_7gxja")

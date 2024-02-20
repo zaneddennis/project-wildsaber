@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="ProjectWildsaber"
-config/version="0.001"
+config/version="0.002"
 run/main_scene="res://Main.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"

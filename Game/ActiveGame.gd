@@ -47,7 +47,7 @@ func SaveGame(slot: String):
 			"last": character_last
 		},
 		"last_played": Time.get_datetime_string_from_system(false, true),
-		"total_playtime": total_playtime + session_time
+		"total_playtime": int(total_playtime + session_time)
 	}
 	meta_file.store_string(JSON.stringify(save_dict))
 
