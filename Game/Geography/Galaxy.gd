@@ -18,13 +18,18 @@ func LoadGalaxy(slot: String):
 	
 	size = Vector2i(data["size_x"], data["size_y"])
 	
+	LoadSectors(slot)
+
+
+func LoadSectors(slot: String):
+	var file = FileAccess.open("%s/%s/sectors.save" % [Util.SAVE_LOCATION, slot], FileAccess.READ)
+	var data = JSON.parse_string(file.get_as_text())
+	
 	sectors = []
 	for x in range(size.x):
 		sectors.append([])
 		for y in range(size.y):
-			var mo = ""
-			if "%d,%d" % [x, y] in data["sectors"]:
-				mo = data["sectors"]["%d,%d" % [x, y]]
-			sectors[x].append(
-				Sector.new(mo)
-			)
+			var s = data["%d,%d" % [x, y]]
+			var sector = Sector.new()
+			sector.ParseSector(Vector2i(x, y), s)
+			sectors[x].append(sector)

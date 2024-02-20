@@ -9,6 +9,13 @@ extends "res://Game/UI/Interfaces/InterfacePages/InterfacePage.gd"
 
 const GRID_SIZE = 32
 
+const RING_ICON_SIZE = 36
+const RING_ICON_IXES = {
+	"": 0,
+	"planet": 2,
+	"belt": 3
+}
+
 
 enum MAP_LEVEL {PLANET, SECTOR, GALAXY}
 var selected_level: MAP_LEVEL = MAP_LEVEL.GALAXY
@@ -52,3 +59,25 @@ func RenderSector(sector: Sector, coords: Vector2i):
 		iconScene = SolarSystemIcon
 	var icon = iconScene.instantiate()
 	$HBoxContainer/Map/VBoxContainer/Map/GridContainer.add_child(icon)
+	icon.mouse_entered.connect(_on_sector_hovered.bind(sector))
+
+
+func RenderSectorDetails(sector: Sector):
+	$HBoxContainer/Sector_Details/Name.text = sector.GetName()
+	$HBoxContainer/Sector_Details/Asteroids.text = "Asteroid Density: %.2f" % sector.asteroid_density
+	
+	if sector.major_object == Sector.MAJOR_OBJECT_SUN:
+		$HBoxContainer/Sector_Details/Rings.show()
+		$HBoxContainer/Sector_Details/Rings/Sun.texture.region.position.x = RING_ICON_SIZE
+		
+		for r in range(Sector.MAX_RINGS):
+			var ri = $HBoxContainer/Sector_Details/Rings.get_node("RingIcon" + str(r))
+			
+			ri.texture.region.position.x = RING_ICON_SIZE * RING_ICON_IXES[sector.rings[r]]
+		
+	else:
+		$HBoxContainer/Sector_Details/Rings.hide()
+
+
+func _on_sector_hovered(sector: Sector):
+	RenderSectorDetails(sector)
