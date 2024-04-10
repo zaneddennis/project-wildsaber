@@ -12,6 +12,10 @@ func Activate(slot: String):
 	LoadGalaxy(slot)
 
 
+func GetSectorV(v: Vector2i):
+	return sectors[v.x][v.y]
+
+
 func LoadGalaxy(slot: String):
 	var file = FileAccess.open("%s/%s/galaxy.save" % [Util.SAVE_LOCATION, slot], FileAccess.READ)
 	var data = JSON.parse_string(file.get_as_text())

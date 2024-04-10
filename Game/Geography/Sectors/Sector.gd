@@ -1,12 +1,6 @@
 extends Object
 class_name Sector
 
-
-const BACKGROUND_COLORS = [
-	Color("000000"), Color("242424"), Color("261325"), Color("260e0e"),
-	Color("261d0d"), Color("331d0c"), Color("101b26"), Color("0d1a09")
-]
-
 const MAX_RINGS = 8
 const MAJOR_OBJECT_SUN = "sun"
 

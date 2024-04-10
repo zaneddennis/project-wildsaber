@@ -6,7 +6,6 @@ extends "res://Game/UI/Interfaces/InterfacePages/InterfacePage.gd"
 @export var EmptySectorIcon: PackedScene
 @export var SolarSystemIcon: PackedScene
 
-
 const GRID_SIZE = 32
 
 const RING_ICON_SIZE = 36
@@ -21,8 +20,8 @@ enum MAP_LEVEL {PLANET, SECTOR, GALAXY}
 var selected_level: MAP_LEVEL = MAP_LEVEL.GALAXY
 
 
-func Activate():
-	super()
+func Activate(ag: ActiveGame):
+	super(ag)
 	
 	if galaxy:
 		$HBoxContainer/Map/VBoxContainer/Map/GridContainer.columns = galaxy.size.x
@@ -60,6 +59,9 @@ func RenderSector(sector: Sector, coords: Vector2i):
 	var icon = iconScene.instantiate()
 	$HBoxContainer/Map/VBoxContainer/Map/GridContainer.add_child(icon)
 	icon.mouse_entered.connect(_on_sector_hovered.bind(sector))
+	
+	if coords == ag.current_sector_coords:
+		icon.ShowPlayerIcon()
 
 
 func RenderSectorDetails(sector: Sector):
