@@ -1,7 +1,10 @@
 extends Panel
 
 
-func ActivateInterface(interface: Control):
+@export var ag: ActiveGame
+
+
+func ActivateInterface(interface: InterfacePage):
 	if interface.visible:
 		hide()
 		interface.Close()
@@ -9,7 +12,7 @@ func ActivateInterface(interface: Control):
 	else:
 		ClearInterfaces()
 		show()
-		interface.Activate()
+		interface.Activate(ag)
 
 
 func ClearInterfaces():
