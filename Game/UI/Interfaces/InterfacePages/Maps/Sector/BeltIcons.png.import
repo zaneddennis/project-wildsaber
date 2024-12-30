@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://g2j3ap6xm8bj"
-path="res://.godot/imported/RingIcons.png-c8b758e98a3b2a43d2abe75bc980c2c8.ctex"
+uid="uid://cs2qqkt1e4c7o"
+path="res://.godot/imported/BeltIcons.png-d5da553f10ec5c4e5665230c9edbce78.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game/UI/Interfaces/InterfacePages/Maps/RingIcons.png"
-dest_files=["res://.godot/imported/RingIcons.png-c8b758e98a3b2a43d2abe75bc980c2c8.ctex"]
+source_file="res://Game/UI/Interfaces/InterfacePages/Maps/Sector/BeltIcons.png"
+dest_files=["res://.godot/imported/BeltIcons.png-d5da553f10ec5c4e5665230c9edbce78.ctex"]
 
 [params]
 

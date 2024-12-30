@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=12 format=3 uid="uid://cjh1fs3dcwmbp"]
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://cjh1fs3dcwmbp"]
 
 [ext_resource type="Texture2D" uid="uid://dpk38bb7oivbw" path="res://Themes/Panel.png" id="1_at5x7"]
 [ext_resource type="Texture2D" uid="uid://tisttmadgu2l" path="res://Themes/Button.png" id="1_k3c8f"]
@@ -54,6 +54,25 @@ texture_margin_top = 4.0
 texture_margin_right = 4.0
 texture_margin_bottom = 4.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4kp1x"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.490196, 0.972549, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cbbsu"]
+bg_color = Color(0.490196, 0.972549, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_b455d"]
 color = Color(0.490196, 0.972549, 1, 1)
 vertical = true
@@ -69,4 +88,6 @@ Button/styles/normal = SubResource("StyleBoxTexture_5alyy")
 Button/styles/pressed = SubResource("StyleBoxTexture_orbiq")
 HSeparator/styles/separator = SubResource("StyleBoxLine_3cos3")
 Panel/styles/panel = SubResource("StyleBoxTexture_s7ica")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_4kp1x")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_cbbsu")
 VSeparator/styles/separator = SubResource("StyleBoxLine_b455d")

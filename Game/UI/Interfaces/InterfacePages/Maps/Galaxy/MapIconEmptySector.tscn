@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c6bgrxpy575pd"]
 
-[ext_resource type="Script" path="res://Game/UI/Interfaces/InterfacePages/Maps/MapSectorIcon.gd" id="1_u0ehx"]
+[ext_resource type="Script" path="res://Game/UI/Interfaces/InterfacePages/Maps/Galaxy/MapSectorIcon.gd" id="1_u0ehx"]
 [ext_resource type="Texture2D" uid="uid://b8oce2prpaxbd" path="res://Game/UI/Interfaces/InterfacePages/Maps/MapIcons.png" id="2_68034"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wrydv"]

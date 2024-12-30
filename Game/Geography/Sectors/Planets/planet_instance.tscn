@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmf5xwferqqm8"]
+
+[ext_resource type="Texture2D" uid="uid://dh6nbh6wtun6f" path="res://Game/Geography/Sectors/Planets/test_planet.png" id="1_hb1kp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bv2g7"]
+radius = 256.0
+
+[node name="PlanetInstance" type="Area2D"]
+monitoring = false
+monitorable = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_hb1kp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_bv2g7")

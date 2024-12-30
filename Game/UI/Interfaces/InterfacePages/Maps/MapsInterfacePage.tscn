@@ -1,10 +1,17 @@
-[gd_scene load_steps=23 format=3 uid="uid://dyvjqh6oqltu2"]
+[gd_scene load_steps=26 format=3 uid="uid://dyvjqh6oqltu2"]
 
 [ext_resource type="PackedScene" uid="uid://crw2j6okiwk0v" path="res://Game/UI/Interfaces/InterfacePages/InterfacePage.tscn" id="1_sv4hb"]
 [ext_resource type="Script" path="res://Game/UI/Interfaces/InterfacePages/Maps/MapsInterfacePage.gd" id="2_sxof5"]
-[ext_resource type="PackedScene" uid="uid://c0l7as1xffp4" path="res://Game/UI/Interfaces/InterfacePages/Maps/MapIconSolarSystem.tscn" id="3_1v7iw"]
-[ext_resource type="PackedScene" uid="uid://c6bgrxpy575pd" path="res://Game/UI/Interfaces/InterfacePages/Maps/MapIconEmptySector.tscn" id="3_g7hom"]
-[ext_resource type="PackedScene" uid="uid://bglw3w8n5t0hn" path="res://Game/UI/Interfaces/InterfacePages/Maps/RingIcon.tscn" id="5_d8gel"]
+[ext_resource type="PackedScene" uid="uid://c0l7as1xffp4" path="res://Game/UI/Interfaces/InterfacePages/Maps/Galaxy/MapIconSolarSystem.tscn" id="3_1v7iw"]
+[ext_resource type="PackedScene" uid="uid://c6bgrxpy575pd" path="res://Game/UI/Interfaces/InterfacePages/Maps/Galaxy/MapIconEmptySector.tscn" id="3_g7hom"]
+[ext_resource type="Texture2D" uid="uid://b8oce2prpaxbd" path="res://Game/UI/Interfaces/InterfacePages/Maps/MapIcons.png" id="5_82csf"]
+[ext_resource type="PackedScene" uid="uid://bglw3w8n5t0hn" path="res://Game/UI/Interfaces/InterfacePages/Maps/Galaxy/RingIcon.tscn" id="5_d8gel"]
+[ext_resource type="PackedScene" uid="uid://eptlnioujd3e" path="res://Game/UI/Interfaces/InterfacePages/Maps/Sector/ring_object_icon.tscn" id="6_aciqd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fajsk"]
+resource_local_to_scene = true
+atlas = ExtResource("5_82csf")
+region = Rect2(0, 32, 32, 32)
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_vc5xt"]
 
@@ -79,6 +86,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 8
 alignment = 2
 
 [node name="Map" type="CenterContainer" parent="HBoxContainer" index="0"]
@@ -89,11 +97,12 @@ size_flags_horizontal = 3
 layout_mode = 2
 alignment = 1
 
-[node name="Map" type="Panel" parent="HBoxContainer/Map/VBoxContainer" index="0"]
+[node name="GalaxyMap" type="Panel" parent="HBoxContainer/Map/VBoxContainer" index="0"]
+visible = false
 custom_minimum_size = Vector2(640, 640)
 layout_mode = 2
 
-[node name="Background" type="ColorRect" parent="HBoxContainer/Map/VBoxContainer/Map" index="0"]
+[node name="Background" type="ColorRect" parent="HBoxContainer/Map/VBoxContainer/GalaxyMap" index="0"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -106,7 +115,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="GridContainer" type="GridContainer" parent="HBoxContainer/Map/VBoxContainer/Map" index="1"]
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer/Map/VBoxContainer/GalaxyMap" index="1"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -117,7 +126,67 @@ theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 20
 
-[node name="Levels" type="HBoxContainer" parent="HBoxContainer/Map/VBoxContainer" index="1"]
+[node name="SectorMap" type="Panel" parent="HBoxContainer/Map/VBoxContainer" index="1"]
+custom_minimum_size = Vector2(640, 640)
+layout_mode = 2
+
+[node name="Background" type="ColorRect" parent="HBoxContainer/Map/VBoxContainer/SectorMap" index="0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="HBoxContainer/Map/VBoxContainer/SectorMap" index="1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="HBoxContainer/Map/VBoxContainer/SectorMap/SubViewportContainer" index="0"]
+handle_input_locally = false
+physics_object_picking = true
+size = Vector2i(640, 640)
+render_target_update_mode = 4
+
+[node name="Star" type="Sprite2D" parent="HBoxContainer/Map/VBoxContainer/SectorMap/SubViewportContainer/SubViewport" index="0"]
+position = Vector2(320, 320)
+texture = SubResource("AtlasTexture_fajsk")
+
+[node name="Ring0" parent="HBoxContainer/Map/VBoxContainer/SectorMap/SubViewportContainer/SubViewport" index="1" instance=ExtResource("6_aciqd")]
+position = Vector2(368, 320)
+
+[node name="Ring1" parent="HBoxContainer/Map/VBoxContainer/SectorMap/SubViewportContainer/SubViewport" index="2" instance=ExtResource("6_aciqd")]
+position = Vector2(400, 320)
+
+[node name="Ring2" parent="HBoxContainer/Map/VBoxContainer/SectorMap/SubViewportContainer/SubViewport" index="3" instance=ExtResource("6_aciqd")]
+position = Vector2(432, 320)
+
+[node name="Ring3" parent="HBoxContainer/Map/VBoxContainer/SectorMap/SubViewportContainer/SubViewport" index="4" instance=ExtResource("6_aciqd")]
+position = Vector2(464, 320)
+
+[node name="Ring4" parent="HBoxContainer/Map/VBoxContainer/SectorMap/SubViewportContainer/SubViewport" index="5" instance=ExtResource("6_aciqd")]
+position = Vector2(496, 320)
+
+[node name="Ring5" parent="HBoxContainer/Map/VBoxContainer/SectorMap/SubViewportContainer/SubViewport" index="6" instance=ExtResource("6_aciqd")]
+position = Vector2(528, 320)
+
+[node name="Ring6" parent="HBoxContainer/Map/VBoxContainer/SectorMap/SubViewportContainer/SubViewport" index="7" instance=ExtResource("6_aciqd")]
+position = Vector2(560, 320)
+
+[node name="Ring7" parent="HBoxContainer/Map/VBoxContainer/SectorMap/SubViewportContainer/SubViewport" index="8" instance=ExtResource("6_aciqd")]
+position = Vector2(592, 320)
+
+[node name="Levels" type="HBoxContainer" parent="HBoxContainer/Map/VBoxContainer" index="2"]
 custom_minimum_size = Vector2(400, 40)
 layout_mode = 2
 alignment = 1
@@ -133,7 +202,6 @@ text = "Planet"
 [node name="Sector" type="Button" parent="HBoxContainer/Map/VBoxContainer/Levels" index="1"]
 layout_mode = 2
 size_flags_horizontal = 3
-disabled = true
 toggle_mode = true
 button_group = SubResource("ButtonGroup_vc5xt")
 text = "Sector"
@@ -152,13 +220,14 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Sector_Details" type="VBoxContainer" parent="HBoxContainer" index="2"]
+[node name="SectorDetails" type="VBoxContainer" parent="HBoxContainer" index="2"]
+visible = false
 custom_minimum_size = Vector2(400, 640)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Name" type="Label" parent="HBoxContainer/Sector_Details" index="0"]
+[node name="Name" type="Label" parent="HBoxContainer/SectorDetails" index="0"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
@@ -166,54 +235,127 @@ text = "Sector Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="HBoxContainer/Sector_Details" index="1"]
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/SectorDetails" index="1"]
 custom_minimum_size = Vector2(324, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Rings" type="HBoxContainer" parent="HBoxContainer/Sector_Details" index="2"]
+[node name="Rings" type="HBoxContainer" parent="HBoxContainer/SectorDetails" index="2"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="Sun" parent="HBoxContainer/Sector_Details/Rings" index="0" instance=ExtResource("5_d8gel")]
+[node name="Star" parent="HBoxContainer/SectorDetails/Rings" index="0" instance=ExtResource("5_d8gel")]
 layout_mode = 2
 
-[node name="RingIcon0" parent="HBoxContainer/Sector_Details/Rings" index="1" instance=ExtResource("5_d8gel")]
+[node name="RingIcon0" parent="HBoxContainer/SectorDetails/Rings" index="1" instance=ExtResource("5_d8gel")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_xpb1t")
 
-[node name="RingIcon1" parent="HBoxContainer/Sector_Details/Rings" index="2" instance=ExtResource("5_d8gel")]
+[node name="RingIcon1" parent="HBoxContainer/SectorDetails/Rings" index="2" instance=ExtResource("5_d8gel")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_tqxp2")
 
-[node name="RingIcon2" parent="HBoxContainer/Sector_Details/Rings" index="3" instance=ExtResource("5_d8gel")]
+[node name="RingIcon2" parent="HBoxContainer/SectorDetails/Rings" index="3" instance=ExtResource("5_d8gel")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_y0a64")
 
-[node name="RingIcon3" parent="HBoxContainer/Sector_Details/Rings" index="4" instance=ExtResource("5_d8gel")]
+[node name="RingIcon3" parent="HBoxContainer/SectorDetails/Rings" index="4" instance=ExtResource("5_d8gel")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_84lph")
 
-[node name="RingIcon4" parent="HBoxContainer/Sector_Details/Rings" index="5" instance=ExtResource("5_d8gel")]
+[node name="RingIcon4" parent="HBoxContainer/SectorDetails/Rings" index="5" instance=ExtResource("5_d8gel")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_nm723")
 
-[node name="RingIcon5" parent="HBoxContainer/Sector_Details/Rings" index="6" instance=ExtResource("5_d8gel")]
+[node name="RingIcon5" parent="HBoxContainer/SectorDetails/Rings" index="6" instance=ExtResource("5_d8gel")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_hnc8k")
 
-[node name="RingIcon6" parent="HBoxContainer/Sector_Details/Rings" index="7" instance=ExtResource("5_d8gel")]
+[node name="RingIcon6" parent="HBoxContainer/SectorDetails/Rings" index="7" instance=ExtResource("5_d8gel")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_72p5y")
 
-[node name="RingIcon7" parent="HBoxContainer/Sector_Details/Rings" index="8" instance=ExtResource("5_d8gel")]
+[node name="RingIcon7" parent="HBoxContainer/SectorDetails/Rings" index="8" instance=ExtResource("5_d8gel")]
 layout_mode = 2
 texture = SubResource("AtlasTexture_gy8lp")
 
-[node name="Asteroids" type="Label" parent="HBoxContainer/Sector_Details" index="3"]
+[node name="Asteroids" type="Label" parent="HBoxContainer/SectorDetails" index="3"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 text = "Asteroid Density: 0.0"
 vertical_alignment = 2
+
+[node name="RingDetails" type="VBoxContainer" parent="HBoxContainer" index="3"]
+custom_minimum_size = Vector2(400, 640)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Name" type="Label" parent="HBoxContainer/RingDetails" index="0"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Object Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/RingDetails" index="1"]
+custom_minimum_size = Vector2(324, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Atmosphere" type="HBoxContainer" parent="HBoxContainer/RingDetails" index="2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/RingDetails/Atmosphere" index="0"]
+layout_mode = 2
+text = "Atmosphere:"
+
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/RingDetails/Atmosphere" index="1"]
+custom_minimum_size = Vector2(256, 8)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+max_value = 1.0
+value = 0.5
+show_percentage = false
+
+[node name="Temperature" type="HBoxContainer" parent="HBoxContainer/RingDetails" index="3"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/RingDetails/Temperature" index="0"]
+layout_mode = 2
+text = "Temperature:"
+
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/RingDetails/Temperature" index="1"]
+custom_minimum_size = Vector2(256, 8)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+max_value = 1.0
+value = 0.5
+show_percentage = false
+
+[node name="Moisture" type="HBoxContainer" parent="HBoxContainer/RingDetails" index="4"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/RingDetails/Moisture" index="0"]
+layout_mode = 2
+text = "Moisture:"
+
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/RingDetails/Moisture" index="1"]
+custom_minimum_size = Vector2(256, 8)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+max_value = 1.0
+value = 0.5
+show_percentage = false
+
+[node name="Spacer" type="Control" parent="HBoxContainer" index="4"]
+layout_mode = 2
+
+[connection signal="pressed" from="HBoxContainer/Map/VBoxContainer/Levels/Sector" to="." method="_on_sector_pressed"]
+[connection signal="pressed" from="HBoxContainer/Map/VBoxContainer/Levels/Galaxy" to="." method="_on_galaxy_pressed"]

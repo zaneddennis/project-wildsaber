@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://8yumsp7kea3b"]
+
+[ext_resource type="Script" path="res://Game/Geography/Sectors/SectorInstance.gd" id="1_i168j"]
+
+[node name="SectorInstance" type="Node2D"]
+script = ExtResource("1_i168j")

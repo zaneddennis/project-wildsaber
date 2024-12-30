@@ -6,6 +6,9 @@ signal exit_to_main_menu
 
 @export var ui: CanvasLayer
 
+# scenes
+var sector_instance_scene = preload("res://Game/Geography/Sectors/SectorInstance.tscn")
+
 # save data
 var save_slot: String
 var session_start_time: float  # seconds
@@ -41,17 +44,16 @@ func RenderSimulationZone():
 	print("Rendering Simulation Zone: ", sector.coords)
 	
 	# always render space background?
-	$Background.SetBackground(sector)
+	# $Background.SetBackground(sector)  # skip for now and come back to this
 	
-	# if space, render space objects + UI
+	# if space, render space objects
+	$SectorInstance.Activate(sector)
 	
-	# if land, render land objects + UI
-	
-	# if hybrid, ???
+	# if land, render land objects
 
 
 func LoadGame(slot: String):
-	var meta_file = FileAccess.open("%s/%s/meta.save" % [Util.SAVE_LOCATION, slot], FileAccess.READ)
+	var meta_file = FileAccess.open("%s/%s/meta.json" % [Util.SAVE_LOCATION, slot], FileAccess.READ)
 	var data = JSON.parse_string(meta_file.get_as_text())
 	
 	character_first = data["character_name"]["first"]

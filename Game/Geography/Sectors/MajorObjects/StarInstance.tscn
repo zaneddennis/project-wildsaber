@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://do5epstbmfxxc"]
+
+[ext_resource type="Texture2D" uid="uid://cjuqbvhitjnu" path="res://Game/Geography/Sectors/MajorObjects/star.png" id="1_nc6c6"]
+
+[node name="StarInstance" type="Sprite2D"]
+texture = ExtResource("1_nc6c6")
