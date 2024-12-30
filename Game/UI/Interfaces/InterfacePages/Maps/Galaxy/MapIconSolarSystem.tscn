@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0l7as1xffp4"]
+
+[ext_resource type="PackedScene" uid="uid://c6bgrxpy575pd" path="res://Game/UI/Interfaces/InterfacePages/Maps/Galaxy/MapIconEmptySector.tscn" id="1_asfn5"]
+[ext_resource type="Texture2D" uid="uid://cr626b353yk5c" path="res://Game/UI/Interfaces/InterfacePages/Maps/Galaxy/MapStar.png" id="2_lyp04"]
+
+[node name="SolarSystemIcon" instance=ExtResource("1_asfn5")]
+texture = ExtResource("2_lyp04")

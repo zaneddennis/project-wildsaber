@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dcpeyghpy8f6v"]
+[gd_scene load_steps=31 format=3 uid="uid://dcpeyghpy8f6v"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_4k26a"]
 [ext_resource type="FontFile" uid="uid://ce4rpfr4j04e2" path="res://Themes/good-times.rg-regular.otf" id="1_51q6t"]
@@ -10,13 +10,14 @@
 [ext_resource type="Script" path="res://Game/Backgrounds/BackgroundManager.gd" id="3_jfwto"]
 [ext_resource type="Script" path="res://Game/UI/Interfaces/Interfaces.gd" id="4_7ib7t"]
 [ext_resource type="PackedScene" uid="uid://dqx2ohmrruriw" path="res://Game/UI/Interfaces/InterfacePages/CharacterInterfacePage.tscn" id="4_e6vuf"]
+[ext_resource type="Texture2D" uid="uid://c5j2lc2pgy2k5" path="res://Game/Geography/Background/Background1.png" id="4_jooct"]
 [ext_resource type="Script" path="res://Debug/TestCamera.gd" id="4_qocmy"]
+[ext_resource type="Texture2D" uid="uid://ddenudpqt62uc" path="res://Game/Geography/Background/BackgroundNear1.png" id="5_f0asf"]
 [ext_resource type="Script" path="res://Game/Geography/Galaxy.gd" id="5_sor46"]
 [ext_resource type="PackedScene" uid="uid://dx5iaqyph5kfo" path="res://Game/UI/Interfaces/InterfacePages/InventoriesInterfacePage.tscn" id="5_tj635"]
 [ext_resource type="PackedScene" uid="uid://dyvjqh6oqltu2" path="res://Game/UI/Interfaces/InterfacePages/Maps/MapsInterfacePage.tscn" id="6_dl607"]
 [ext_resource type="PackedScene" uid="uid://ce7cy1mrfoy6u" path="res://Game/UI/Interfaces/InterfacePages/SystemInterfacePage.tscn" id="7_8cghn"]
-
-[sub_resource type="ImageTexture" id="ImageTexture_f7jga"]
+[ext_resource type="PackedScene" uid="uid://8yumsp7kea3b" path="res://Game/Geography/Sectors/SectorInstance.tscn" id="8_eqk6i"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_4rark"]
 action = &"interface_character"
@@ -82,7 +83,7 @@ motion_scale = Vector2(0.25, 0.25)
 motion_mirroring = Vector2(3840, 3840)
 
 [node name="Sprite2D" type="Sprite2D" parent="ActiveGame/Background/Stars_Far"]
-texture = SubResource("ImageTexture_f7jga")
+texture = ExtResource("5_f0asf")
 centered = false
 
 [node name="Stars_Mid" type="ParallaxLayer" parent="ActiveGame/Background"]
@@ -96,6 +97,7 @@ centered = false
 motion_mirroring = Vector2(3840, 3840)
 
 [node name="Sprite2D" type="Sprite2D" parent="ActiveGame/Background/Stars_Near"]
+texture = ExtResource("4_jooct")
 centered = false
 
 [node name="Galaxy" type="Node" parent="ActiveGame"]
@@ -104,6 +106,8 @@ script = ExtResource("5_sor46")
 [node name="TestCamera" type="Camera2D" parent="ActiveGame"]
 enabled = false
 script = ExtResource("4_qocmy")
+
+[node name="SectorInstance" parent="ActiveGame" instance=ExtResource("8_eqk6i")]
 
 [node name="GameUI" type="CanvasLayer" parent="."]
 visible = false

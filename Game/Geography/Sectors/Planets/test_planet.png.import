@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cr626b353yk5c"
-path="res://.godot/imported/MapStar.png-bfe11b1ed1dfd7c1c394d4a837054956.ctex"
+uid="uid://dh6nbh6wtun6f"
+path="res://.godot/imported/test_planet.png-4f416ac20171c9414d2ef2ea017ffb05.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game/UI/Interfaces/InterfacePages/Maps/MapStar.png"
-dest_files=["res://.godot/imported/MapStar.png-bfe11b1ed1dfd7c1c394d4a837054956.ctex"]
+source_file="res://Game/Geography/Sectors/Planets/test_planet.png"
+dest_files=["res://.godot/imported/test_planet.png-4f416ac20171c9414d2ef2ea017ffb05.ctex"]
 
 [params]
 

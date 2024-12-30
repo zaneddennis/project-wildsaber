@@ -35,7 +35,7 @@ func GetSaves() -> Dictionary:
 	var result = {}
 	for save_name in saves_dir.get_directories():
 		var save_meta = JSON.parse_string(
-			FileAccess.open(Util.SAVE_LOCATION + "/" + save_name + "/meta.save", FileAccess.READ).get_as_text()
+			FileAccess.open(Util.SAVE_LOCATION + "/" + save_name + "/meta.json", FileAccess.READ).get_as_text()
 		)
 		
 		if save_meta:
